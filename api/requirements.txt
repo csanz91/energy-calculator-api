@@ -1,0 +1,9 @@
+fastapi
+python-multipart
+uvicorn[standard]
+holidays-es
+pandas
+requests
+bs4
+openpyxl
+numpy
