@@ -54,3 +54,7 @@ def create_upload_file(file: UploadFile, contracted_p1: float = Form(), contract
     response["all"] = all_periods_data
 
     return {"response": response}
+
+@app.get("/tariffs")
+def get_tariffs():
+    return tariffs_data.tariffs
