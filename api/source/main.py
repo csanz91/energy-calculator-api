@@ -22,6 +22,7 @@ app = FastAPI()
 
 origins = [
     "https://calc.cesarsanz.dev",
+    "https://energy-calculator-tau.vercel.app",
 ]
 
 app.add_middleware(
