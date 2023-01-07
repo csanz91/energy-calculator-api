@@ -3,9 +3,9 @@ from utils import TariffData
 tariffs = [
     TariffData(
         name="Iberdrola Plan Online",
-        energy_cost_p1=0.159353,
-        energy_cost_p2=0.159353,
-        energy_cost_p3=0.159353,
+        energy_cost_p1=0.167797,
+        energy_cost_p2=0.167797,
+        energy_cost_p3=0.167797,
         power_cost_p1=0.08402739726,
         power_cost_p2=0.01123287671,
         rd_10_included=False,
@@ -39,11 +39,11 @@ tariffs = [
     ),
     TariffData(
         name="Endesa One Luz 3 periodos",
-        energy_cost_p1=0.1952,
-        energy_cost_p2=0.1496,
-        energy_cost_p3=0.12,
-        power_cost_p1=0.092772,
-        power_cost_p2=0.021910,
+        energy_cost_p1=0.193739,
+        energy_cost_p2=0.149651,
+        energy_cost_p3=0.1201,
+        power_cost_p1=0.090632,
+        power_cost_p2=0.0222457,
         rd_10_included=False,
     ),
     TariffData(
