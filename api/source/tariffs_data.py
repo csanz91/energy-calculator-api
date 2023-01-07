@@ -2,15 +2,6 @@ from utils import TariffData
 
 tariffs = [
     TariffData(
-        name="Bonpreu Nueva",
-        energy_cost_p1=0.269999,
-        energy_cost_p2=0.209999,
-        energy_cost_p3=0.179999,
-        power_cost_p1=0.071937,
-        power_cost_p2=0.002966,
-        rd_10_included=False,
-    ),
-    TariffData(
         name="Iberdrola Plan Online",
         energy_cost_p1=0.159353,
         energy_cost_p2=0.159353,
@@ -39,11 +30,11 @@ tariffs = [
     ),
     TariffData(
         name="Endesa conecta",
-        energy_cost_p1=0.146,
-        energy_cost_p2=0.146,
-        energy_cost_p3=0.146,
-        power_cost_p1=0.092772,
-        power_cost_p2=0.021910,
+        energy_cost_p1=0.145587,
+        energy_cost_p2=0.145587,
+        energy_cost_p3=0.145587,
+        power_cost_p1=0.090632,
+        power_cost_p2=0.0222457,
         rd_10_included=False,
     ),
     TariffData(
@@ -75,9 +66,9 @@ tariffs = [
     ),
     TariffData(
         name="Repsol Ahorro Plus",
-        energy_cost_p1=0.1699,
-        energy_cost_p2=0.1699,
-        energy_cost_p3=0.1699,
+        energy_cost_p1=0.1499,
+        energy_cost_p2=0.1499,
+        energy_cost_p3=0.1499,
         power_cost_p1=0.054521,
         power_cost_p2=0.054521,
         rd_10_included=False,
