@@ -288,7 +288,7 @@ def get_tariffs_costs(
     consumption_data: pd.DataFrame,
     rd_10_mean_price: float,
     tariffs: list[TariffData]
-):
+) -> list[tuple[str, float]]:
     # Get a list with the energy costs for each tariff
     tariffs_costs = [
         (
