@@ -44,7 +44,7 @@ def disk_cache(func):
 @disk_cache
 def get_rd_10_prices() -> pd.DataFrame:
     rd_10_prices_url = (
-        "https://www.mibgas.es/es/file-access/MIBGAS_Data_2022.xlsx?path=AGNO_2022/XLS"
+        "https://www.mibgas.es/es/file-access/MIBGAS_Data_2023.xlsx?path=AGNO_2023/XLS"
     )
     return pd.read_excel(
         rd_10_prices_url, sheet_name="PGN_RD_10_2022", names=["date", "price"], index_col=0
