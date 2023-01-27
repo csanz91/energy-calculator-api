@@ -43,6 +43,7 @@ services:
       - "8000"
     volumes:
       - ./api/logs:/app/logs
+      - ./api/data:/app/data
     environment:
       - VIRTUAL_HOST=api.calc.cesarsanz.dev
       - VIRTUAL_PORT=8000

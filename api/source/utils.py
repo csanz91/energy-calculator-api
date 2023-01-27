@@ -339,3 +339,35 @@ def get_data(
     data["th_rd_10_threshold"] = th_rd_10_threshold
 
     return data
+
+@dataclass
+class GasDataConsumption:
+    measurement: float
+    time: datetime
+
+
+def calculate_gas_cost(
+    consumptionA: GasDataConsumption,
+    consumptionB: GasDataConsumption,
+) -> float:
+
+    FIXED_COST_PER_DAY = 0.165370  # €
+    MONITOR_COST_PER_DAY = 0.019068  # €
+    TUR_TARIFF_COST = 0.063555  # €/kWh
+    GAS_TAX_COST = 0.002340  # €/kWh
+    TAX_COST = 5  # %
+    m3_to_kWh = 10.579
+
+    num_days = max((consumptionB.time - consumptionA.time).days, 1)
+
+    energy_consumption = (consumptionB.measurement -
+                          consumptionA.measurement) * m3_to_kWh
+
+    energy_monitor_cost = MONITOR_COST_PER_DAY * num_days
+    fixed_cost = FIXED_COST_PER_DAY * num_days
+
+    tax = GAS_TAX_COST * energy_consumption
+    energy_cost = TUR_TARIFF_COST * energy_consumption
+
+    gas_cost = energy_monitor_cost + fixed_cost + tax + energy_cost
+    return gas_cost * (1 + TAX_COST / 100)
