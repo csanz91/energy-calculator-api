@@ -110,8 +110,9 @@ def add_measurement(userID: int = Form(1), consumption: float = Form()):
 
     # this months consumptions
     month_start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
-    month_end = now.replace(day=31, hour=23, minute=59,
-                            second=59, microsecond=999)
+    month_end = now.replace(day=28, hour=23, minute=59,
+                            second=59, microsecond=999) + timedelta(days=4)
+    month_end = month_end - timedelta(days=month_end.day)
     monthly_measurements = df.loc[month_start:month_end]
     cost_this_month = utils.calculate_gas_cost(utils.GasDataConsumption(measurement=monthly_measurements.iloc[0]["Measurement"], time=monthly_measurements.index[0]),
                                                utils.GasDataConsumption(measurement=monthly_measurements.iloc[-1]["Measurement"], time=monthly_measurements.index[-1]))
