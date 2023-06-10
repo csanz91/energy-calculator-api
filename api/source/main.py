@@ -1,12 +1,12 @@
+import datetime
 import logging
 
-from fastapi import FastAPI, UploadFile, Form, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-import datetime
+import mongodb_interface as dbinterface
 import pandas as pd
-
 import tariffs_data
 import utils
+from fastapi import FastAPI, Form, HTTPException, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 
 logger = logging.getLogger()
 handler = logging.handlers.RotatingFileHandler(
@@ -20,6 +20,8 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 data_file = "../data/measurements"
+
+dbinterface.initIndex()
 
 app = FastAPI()
 
@@ -58,7 +60,16 @@ def create_upload_file(file: UploadFile, contracted_p1: float = Form(), contract
         df, contracted_p1, contracted_p2, rd_10_mean_price, tariffs_data.tariffs)
     response["all"] = all_periods_data
 
+    response["createdAt"] = datetime.datetime.utcnow()
+    db_id = dbinterface.insertEnergyData(response)
+    response["id"] = db_id
+
     return {"response": response}
+
+@app.get("/energy-data/{db_id}")
+def energy_data(db_id: str):
+    result = dbinterface.getEnergyData(db_id)
+    return result
 
 @app.get("/tariffs")
 def get_tariffs():

@@ -49,9 +49,20 @@ services:
       - VIRTUAL_PORT=8000
       - LETSENCRYPT_HOST=api.calc.cesarsanz.dev
 
+  mongodb:
+    restart: unless-stopped
+    image: mongo:6.0
+    hostname: docker
+    volumes:
+      - mongodb_data:/data/db
+    expose:
+      - "27017"
+    command: mongod --setParameter diagnosticDataCollectionEnabled=false # --quiet
+
 volumes:
   nginx_acme:
   nginx_vhost:
   nginx_dhparam:
   nginx_html:
   nginx_certs:
+  mongodb_data:
